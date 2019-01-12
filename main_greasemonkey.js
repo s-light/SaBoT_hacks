@@ -6,7 +6,6 @@
 // @version  1.4.0
 // @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/fix_css.js
 // @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/ui_mod.js
-// @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/worker_regex_gm_mini.js
 // @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/export_mod.js
 // ==/UserScript==
 // https://wiki.greasespot.net/Metadata_Block#.40require

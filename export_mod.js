@@ -1,3 +1,4 @@
+
 function load_content(url, onload_function) {
     console.log('load_content');
     let httpRequest = new XMLHttpRequest();
@@ -79,24 +80,85 @@ function add_nav_button(
 }
 
 
-function escape_csv_in_background(csv_raw) {
+
+function escape_csv_in_background(csv_raw, onresult) {
     console.info('escape_csv_in_background..');
     // in background worker...
     // inspired by
     // https://stackoverflow.com/a/6454685/574981
+    // https://stackoverflow.com/a/19201292/574981
 
-    console.log('escape_worker', escape_worker);
+var blobURL = URL.createObjectURL(new Blob(['(',
 
-    var blob = new Blob([
-        // document.querySelector('#worker1').textContent
-        escape_worker
-    ], { type: 'text/javascript' });
-
-    var worker = new Worker(window.URL.createObjectURL(blob));
-    worker.onmessage = function(e) {
-        console.log('Received: ' + e.data);
-        // document.querySelector('#result').value = e.data;
+function() {
+    self.onmessage = function(e) {
+        console.log('worker speaking: start job..');
+        // console.log("start job:", e.data);
+        // self.postMessage('msg from worker');
+        self.postMessage(escape_csv(e.data));
+        console.log('worker speaking: job done!');
     };
+
+
+
+    function escape_csv(orig) {
+        let mod = '';
+
+        // get first line
+        // match |
+        // count matches
+        // +1 == field count
+        let csv_field_count = orig.split('\n')[0].match(/\|/g).length + 1;
+        // console.log('csv_field_count', csv_field_count);
+
+        // first escape all ''
+        mod = orig.replace(/\'/gim, '\"');
+        // console.log('mod', mod);
+
+        // prepare match regex
+        // let csv_escape_match = "^(.*)"
+        // for (let i = 2; i <= csv_field_count; i++) {
+        //     csv_escape_match += "\\|(.*)";
+        // }
+        let csv_escape_match = '^([^]*?)';
+        for (let i = 2; i < csv_field_count; i++) {
+            csv_escape_match += '\\|([^]*?)';
+        }
+        csv_escape_match += '\\|([^]*?)$';
+        let csv_escape_regex = new RegExp(csv_escape_match, 'gim');
+
+        // prepare replace string
+        let csv_escape_seq = '';
+        csv_escape_seq += '\'$' + 1 + '\'';
+        for (let i = 2; i <= csv_field_count; i++) {
+            csv_escape_seq += '|\'$' + i + '\'';
+        }
+
+        // console.log('csv_escape_match', csv_escape_match);
+        // console.log('csv_escape_regex', csv_escape_regex);
+        // console.log('csv_escape_seq', csv_escape_seq);
+
+        // console.log('replace..');
+        mod = mod.replace(csv_escape_regex, csv_escape_seq);
+        // console.log('replace done');
+        return mod;
+    }
+}.toString(),
+
+')()'], {type: 'application/javascript'}));
+
+    // var blob = new Blob([
+    //     document.querySelector('#worker1').textContent
+    //     // escape_worker
+    // ], { type: 'text/javascript' });
+
+
+    // console.log('blob created successfully.');
+    // console.log('blobURL', blobURL);
+
+    // var worker = new Worker(window.URL.createObjectURL(blob));
+    let worker = new Worker(blobURL);
+    worker.onmessage = onresult;
     // Start the worker.
     worker.postMessage(csv_raw);
 
@@ -107,21 +169,28 @@ function get_csv_and_escape_it() {
     console.log('get_csv_and_escape_it');
     // console.log(this);
     const link_el = this;
-    console.log('load data');
+    // console.log('load data');
     // try and load csv file
     load_content(
         'https://projects.make-munich.de/projects/export/hall',
         function(data) {
-            console.log('csv_export_raw loaded:');
+            // console.log('csv_export_raw loaded');
             // console.log('data', data);
-            console.log(link_el);
+            // console.log(link_el);
             // convert
-            escape_csv_in_background(data);
-            saveAsFile(
-                link_el,
+            escape_csv_in_background(
                 data,
-                'cfm_export',
-                '.csv'
+                function(e) {
+                    console.log('onresult');
+                    console.log('e.data:', e.data);
+                    console.log('link_el', link_el);
+                    // saveAsFile(
+                    //     link_el,
+                    //     data,
+                    //     'cfm_export',
+                    //     '.csv'
+                    // );
+                }
             );
         }
     );
