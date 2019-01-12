@@ -21,5 +21,5 @@ escape_worker = (
     "    }" +
     "    mod = mod.replace(csv_escape_regex, csv_escape_seq);" +
     "    return mod;" +
-    "}" +
+    "}"
 );
