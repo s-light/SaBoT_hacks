@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name     Make Munich MOD
+// @name     SaBoT MOD
 // @description fix some css things.. add some nice touches to UI
 // @namespace   https://github.com/s-light/
-// @include     https://projects.make-munich.de/projects/*
+// @include     https://YOURURLTO_SaBoT/projects/*
 // @version  1.4.0
 // @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/fix_css.js
 // @require https://raw.githubusercontent.com/s-light/SaBoT_hacks/master/ui_mod.js
@@ -11,7 +11,7 @@
 // https://wiki.greasespot.net/Metadata_Block#.40require
 
 function start_script() {
-    console.info('Make Munich MOD..');
+    console.info('SaBoT MOD..');
 
     fix_css();
     ui_mod();

@@ -164,7 +164,7 @@ function get_csv_and_escape_it() {
     // console.log('load data');
     // try and load csv file
     load_content(
-        'https://projects.make-munich.de/projects/export/hall',
+        '/projects/export/hall',
         function(data) {
             // console.log('csv_export_raw loaded');
             // console.log('data', data);
