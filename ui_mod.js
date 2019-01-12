@@ -266,11 +266,14 @@ function ui_mod() {
     console.info('all user scripting done.');
 }
 
+
 // console.clear();
 // console.info('******************************************');
 
-//console.info('Jamendo_FLAC_Down-loader is waiting for DOMContentLoaded');
-document.addEventListener('DOMContentLoaded', function(event) {
-    console.info('DOM fully loaded and parsed.', event);
-    // ui_mod();
-});
+// document.addEventListener('DOMContentLoaded', function(event) {
+//     console.info('DOM fully loaded and parsed.', event);
+//     // ui_mod();
+// });
+// document.addEventListener('load', function(event) {
+//     console.info('All resources finished loading!', event);
+// }, false);
