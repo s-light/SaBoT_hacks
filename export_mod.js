@@ -26,29 +26,27 @@ function load_content(url, onload_function) {
     httpRequest.send();
 }
 
-function saveAsFile(link, content, filename, extension) {
+function saveAsFile(link, content, filename, extension='.csv') {
     // https://developer.mozilla.org/en-US/docs/Web/API/Blob
     // var aFileParts = ['<a id='a'><b id='b'>hey!</b></a>'];
     // var oMyBlob = new Blob(aFileParts, {type: 'text/html'}); // the blob
 
-    if (! extension) {
-        extension = '.txt';
-    }
-
     // http://stackoverflow.com/a/16330385/574981
-    var blob = new Blob([content], {type: 'text/text'});
+    var blob = new Blob([content], {type: 'text/csv'});
     var url = URL.createObjectURL(blob);
 
     console.log('update download link:');
-    // var a = document.createElement('a');
-    var a = link;
+    const a = document.createElement('a');
+    // const a = link;
     a.download = filename + extension;
     a.href = url;
+    a.target = '_blank';
     // a.textContent = 'Download File';
     console.log('download link:', a);
     // console.log('open download link:', a);
-    // a.click();
-    //a.remove();
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 
 }
 
@@ -64,6 +62,7 @@ function add_nav_button(
     const link_new = document.createElement('a');
     link_new.appendChild(document.createTextNode(link_text));
     link_new.onclick = onclick;
+    link_new.type = 'button';
 
     const li_new = document.createElement('li');
     li_new.classList.add('pull-right');
@@ -147,16 +146,9 @@ function() {
 
 ')()'], {type: 'application/javascript'}));
 
-    // var blob = new Blob([
-    //     document.querySelector('#worker1').textContent
-    //     // escape_worker
-    // ], { type: 'text/javascript' });
-
-
     // console.log('blob created successfully.');
     // console.log('blobURL', blobURL);
 
-    // var worker = new Worker(window.URL.createObjectURL(blob));
     let worker = new Worker(blobURL);
     worker.onmessage = onresult;
     // Start the worker.
@@ -182,14 +174,14 @@ function get_csv_and_escape_it() {
                 data,
                 function(e) {
                     console.log('onresult');
-                    console.log('e.data:', e.data);
-                    console.log('link_el', link_el);
-                    // saveAsFile(
-                    //     link_el,
-                    //     data,
-                    //     'cfm_export',
-                    //     '.csv'
-                    // );
+                    // console.log('e.data:', e.data);
+                    // console.log('link_el', link_el);
+                    saveAsFile(
+                        link_el,
+                        e.data,
+                        'cfm_export',
+                        '.csv'
+                    );
                 }
             );
         }
