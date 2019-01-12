@@ -4,7 +4,7 @@ function add_nav_button(
     onclick,
     parent_el=undefined
 ) {
-    console.group('add_nav_button:');
+    // console.group('add_nav_button:');
 
     const link_new = document.createElement('a');
     link_new.appendChild(document.createTextNode(link_text));
@@ -19,8 +19,8 @@ function add_nav_button(
     }
     parent_el.appendChild(li_new);
 
-    console.groupEnd();
-    console.log('');
+    // console.groupEnd();
+    // console.log('');
     return link_new;
 }
 
@@ -31,7 +31,7 @@ function add_css_toggle_option(
     active=true,
     parent_el=undefined
 ) {
-    console.group('add_css_toggle_option:');
+    // console.group('add_css_toggle_option:');
 
     const toggle_input = document.createElement('input');
     toggle_input.classList.add('checkboxinput');
@@ -55,8 +55,8 @@ function add_css_toggle_option(
     }
     parent_el.appendChild(label);
 
-    console.groupEnd();
-    console.log('');
+    // console.groupEnd();
+    // console.log('');
 }
 
 function add_input_select(
@@ -66,7 +66,7 @@ function add_input_select(
     preselect=undefined,
     parent_el=undefined
 ) {
-    console.group('add_input_select:');
+    // console.group('add_input_select:');
 
     // <label>
     //   Choose a thing:
@@ -107,10 +107,10 @@ function add_input_select(
     }
     parent_el.appendChild(label);
 
-    console.log(label);
+    // console.log(label);
 
-    console.groupEnd();
-    console.log('');
+    // console.groupEnd();
+    // console.log('');
 }
 
 
@@ -256,14 +256,14 @@ function mod_action_edit_target() {
 
 
 function ui_mod() {
-    console.info('Make Munich MOD..');
+    console.info('ui_mod()');
 
     mod_email();
 
     mod_actions();
     mod_action_edit_target();
 
-    console.info('all user scripting done.');
+    console.info('ui_mod done.');
 }
 
 
