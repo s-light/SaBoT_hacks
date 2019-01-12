@@ -31,7 +31,7 @@ To install this script for your SaBoT website:
 
 Mods:
 - header and footer are not fixed anymore.
-- E-Mail filed contains combined string form `Main Contact` + `Project name` + `E-Mail`
+- E-Mail field contains combined string form `Main Contact` + `Project name` + `E-Mail`
 - Actions:
     - delete and \*accept can be hidden
     - edit link points to *sub tab* that is chosen in 'target_tab'
