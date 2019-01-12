@@ -1,0 +1,46 @@
+#footer,
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: static;
+
+}
+
+#wrap {
+    margin: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0.5em;
+    max-width: 100%;
+}
+
+body {
+    padding: 0;
+}
+
+.radio, .checkbox {
+    display: inline-block;
+}
+
+
+/* action button modifications */
+.container > table.hide_action_delete > tbody > tr > td >
+    a[href*="projects/del/"] {
+    display: none;
+}
+
+.container > table.hide_action_accept > tbody > tr > td >
+    form[action*="accept"] {
+    display: none !important;
+}
+
+.container .controls > label {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+/* show only unaccepted */
+.container > table.hide_entries_success > tbody > tr.success {
+    display: none;
+}
