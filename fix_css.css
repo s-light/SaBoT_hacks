@@ -4,8 +4,8 @@ body {
 }
 
 
-
-#footer .navbar-fixed-bottom {
+details.footer {
+    color: hsl(0, 0%, 0%);
     position: fixed;
     margin: 0;
     padding: 0.5em;
