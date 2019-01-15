@@ -50,7 +50,7 @@ function apply_folding_footer() {
 
 function apply_folding_header() {
     console.log('apply_folding_header...');
-    const footer = document.querySelector('#header');
+    const header = document.querySelector('nav.navbar-fixed-top');
     if (header) {
         const el_details = document.createElement('details');
         el_details.classList.add('header');
@@ -60,7 +60,7 @@ function apply_folding_header() {
 
         // move header as child to details..
         header.parentElement.appendChild(el_details);
-        el_details.appendChild(footer);
+        el_details.appendChild(header);
     }
 }
 
