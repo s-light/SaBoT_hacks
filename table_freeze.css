@@ -5,22 +5,23 @@ based on
 https://stackoverflow.com/questions/15811653/table-with-fixed-header-and-fixed-column-on-pure-css/50516259#50516259
 */
 
-div.container {
+
+div.table_wrapper {
   overflow: scroll;
 }
 
-thead th {
+.table_wrapper thead th {
   position: -webkit-sticky; /* for Safari */
   position: sticky;
   top: 0;
 }
 
-thead th:first-child {
+.table_wrapper thead th:first-child {
   left: 0;
   z-index: 1;
 }
 
-tbody th {
+.table_wrapper tbody th {
   position: -webkit-sticky; /* for Safari */
   position: sticky;
   left: 0;
