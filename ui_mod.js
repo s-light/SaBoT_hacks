@@ -113,7 +113,21 @@ function add_input_select(
     // console.log('');
 }
 
-
+function get_column_index_from_name(field_name) {
+    // returns -1 if nothing found. otherwise returns child index.
+    let thead_tr = document.querySelector('.container table > thead > tr');
+    let column_index = thead_tr.childElementCount;
+    if (thead_tr && (thead_tr.childElementCount > 0)) {
+        do {
+            column_index--;
+            console.log('col ', thead_tr.children[column_index].textContent);
+        } while (
+            (column_index >= 0) &&
+            (thead_tr.children[column_index]
+                .textContent.search(field_name) == -1)
+        );
+    }
+}
 
 function modifie_email(project_name_el, main_contact_el, email_el) {
     const project_name = project_name_el.textContent.trim();
@@ -127,18 +141,19 @@ function modifie_email(project_name_el, main_contact_el, email_el) {
 
 function mod_email() {
     console.group('mod_email:');
-    let thead_tr = document.querySelector('.container > table > thead > tr');
-    let tbody = document.querySelector('.container > table > tbody');
+    let thead_tr = document.querySelector('.container table > thead > tr');
+    let tbody = document.querySelector('.container table > tbody');
     if (thead_tr && (tbody.childElementCount > 0)) {
-        const project_name_col = 0;
-        const main_contact_col = 1;
-        const email_col = 2;
+        const project_name_col = get_column_index_from_name('project name');
+        const main_contact_col = get_column_index_from_name('main contact');
+        const email_col = get_column_index_from_name('mail');
+        console.log('project_name_col', project_name_col);
+        console.log('main_contact_col', main_contact_col);
+        console.log('email_col', email_col);
         if (
-            thead_tr.children[project_name_col].textContent.
-                startsWith('Project name') &&
-            thead_tr.children[main_contact_col].textContent.
-                startsWith('Main Contact') &&
-            thead_tr.children[email_col].textContent.startsWith('E-Mail')
+            project_name_col >= 0 &&
+            main_contact_col >= 0 &&
+            email_col >= 0
         ) {
             for (let row of tbody.children) {
                 // console.log(row);
