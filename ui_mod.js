@@ -59,6 +59,24 @@ function add_css_toggle_option(
     // console.log('');
 }
 
+
+function add_link(
+    url,
+    link_text,
+    parent_el=undefined,
+    target='_blank'
+) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.appendChild(document.createTextNode(link_text));
+    if (parent_el == undefined) {
+        parent_el = document.querySelector('.container > div.controls');
+    }
+    parent_el.appendChild(link);
+    return link;
+}
+
+
 function add_input_select(
     option_list,
     change_action,
@@ -113,6 +131,19 @@ function add_input_select(
     // console.log('');
 }
 
+function add_icon_link(link_text, url, icon='envelope', target='_blank') {
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = target;
+    const symbol = document.createElement('span');
+    symbol.classList.add('glyphicon');
+    symbol.classList.add('glyphicon-' + icon);
+    link.appendChild(symbol);
+    link.appendChild(document.createTextNode(link_text));
+    return link;
+}
+
+
 function get_column_index_from_name(field_name) {
     // returns -1 if nothing found. otherwise returns child index.
     let thead_tr = document.querySelector('.container table > thead > tr');
@@ -139,14 +170,28 @@ function get_column_index_from_name(field_name) {
     return column_index;
 }
 
-function create_named_mail_address(project_name_el, main_contact_el, email_el) {
+
+function create_named_mail_address_icon(
+    project_name_el,
+    main_contact_el,
+    email_el
+) {
     const project_name = project_name_el.textContent.trim();
     const main_contact = main_contact_el.textContent.trim();
     const email = email_el.textContent.trim();
-
     const new_mail = main_contact + ' - ' + project_name + ' <' + email + '>';
-
     email_el.textContent = new_mail;
+
+    const mailto_url = (
+        'mailto:' + encodeURI(new_mail) +
+        '?subject=' + encodeURI('Make Munich 2019: ') +
+        '&content=' + encodeURI('')
+    );
+    // console.log('mailto_url', mailto_url);
+    const mailto_link = add_icon_link('', mailto_url);
+    // console.log(mailto_link);
+    email_el.textContent = '';
+    email_el.appendChild(mailto_link);
 }
 
 function mod_email() {
@@ -167,7 +212,7 @@ function mod_email() {
         ) {
             for (let row of tbody.children) {
                 // console.log(row);
-                create_named_mail_address(
+                create_named_mail_address_icon(
                     row.children[project_name_col],
                     row.children[main_contact_col],
                     row.children[email_col]
@@ -291,11 +336,14 @@ function mod_action_edit_target() {
 }
 
 
+
 function add_focus_targets() {
     const view_nav = document.querySelector('ul.nav.nav-pills');
     view_nav.id = 'focus_nav';
     const table_wrapper = document.querySelector('.table_wrapper');
     table_wrapper.id = 'focus_table';
+    add_link('#focus_nav', 'jump to nav');
+    add_link('#focus_table', 'jump to table');
 }
 
 
