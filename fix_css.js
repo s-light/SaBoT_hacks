@@ -22,13 +22,29 @@ function add_css_file(url) {
 
 function add_table_wrapper() {
     console.log('add_table_wrapper...');
-    let table = document.querySelector('table');
+    const table = document.querySelector('table');
     if (table) {
         const el_wrapper = document.createElement('div');
         el_wrapper.classList.add('table_wrapper');
         // move table as child to wrapper..
         table.parentElement.appendChild(el_wrapper);
         el_wrapper.appendChild(table);
+    }
+}
+
+function apply_folding_footer() {
+    console.log('apply_folding_footer...');
+    const footer = document.querySelector('#footer');
+    if (footer) {
+        const el_details = document.createElement('details');
+        el_details.classList.add('footer');
+        const el_sum = document.createElement('summary');
+        el_sum.appendChild(document.createTextNode('info'));
+        el_details.appendChild(el_sum);
+
+        // move footer as child to details..
+        footer.parentElement.appendChild(el_details);
+        el_details.appendChild(footer);
     }
 }
 
@@ -42,6 +58,8 @@ function fix_css() {
     );
 
     add_table_wrapper();
+
+    apply_folding_footer();
 
     console.groupEnd();
     console.log('');
