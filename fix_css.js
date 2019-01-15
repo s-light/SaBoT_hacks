@@ -39,11 +39,27 @@ function apply_folding_footer() {
         const el_details = document.createElement('details');
         el_details.classList.add('footer');
         const el_sum = document.createElement('summary');
-        el_sum.appendChild(document.createTextNode('info'));
+        el_sum.appendChild(document.createTextNode('info footer'));
         el_details.appendChild(el_sum);
 
         // move footer as child to details..
         footer.parentElement.appendChild(el_details);
+        el_details.appendChild(footer);
+    }
+}
+
+function apply_folding_header() {
+    console.log('apply_folding_header...');
+    const footer = document.querySelector('#header');
+    if (header) {
+        const el_details = document.createElement('details');
+        el_details.classList.add('header');
+        const el_sum = document.createElement('summary');
+        el_sum.appendChild(document.createTextNode('header'));
+        el_details.appendChild(el_sum);
+
+        // move header as child to details..
+        header.parentElement.appendChild(el_details);
         el_details.appendChild(footer);
     }
 }
@@ -60,6 +76,7 @@ function fix_css() {
     add_table_wrapper();
 
     apply_folding_footer();
+    apply_folding_header();
 
     console.groupEnd();
     console.log('');

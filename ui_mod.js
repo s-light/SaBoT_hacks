@@ -242,8 +242,8 @@ function mod_actions() {
     }
 
     // add line break
-    const controls = document.querySelector('.container > div.controls');
-    controls.appendChild(document.createElement('br'));
+    // const controls = document.querySelector('.container > div.controls');
+    // controls.appendChild(document.createElement('br'));
 
     if (document.querySelector('a[href*="projects/del/"]')) {
         add_css_toggle_option(
@@ -342,7 +342,7 @@ function add_focus_targets() {
     view_nav.id = 'focus_nav';
     const table_wrapper = document.querySelector('.table_wrapper');
     table_wrapper.id = 'focus_table';
-    add_link('#focus_nav', 'jump to nav');
+    // add_link('#focus_nav', 'jump to nav');
     add_link('#focus_table', 'jump to table');
 }
 
