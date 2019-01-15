@@ -3,7 +3,7 @@
 // @description fix some css things.. add some nice touches to UI
 // @namespace   https://github.com/s-light/
 // @include     https://YOURURLTO_SaBoT/projects/*
-// @version  1.5.0
+// @version  1.6.0
 // @require https://s-light.github.io/SaBoT_hacks/fix_css.js
 // @require https://s-light.github.io/SaBoT_hacks/ui_mod.js
 // export_mod not useful anymore - CSV export is gone :-(
