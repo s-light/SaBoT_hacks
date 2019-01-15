@@ -7,22 +7,24 @@ https://stackoverflow.com/questions/15811653/table-with-fixed-header-and-fixed-c
 
 
 div.table_wrapper {
-  overflow: scroll;
+    overflow: scroll;
+    clear: both;
+    max-height: calc(100vh - 6em);
 }
 
 .table_wrapper thead th {
-  position: -webkit-sticky; /* for Safari */
-  position: sticky;
-  top: 0;
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 0;
 }
 
 .table_wrapper thead th:first-child {
-  left: 0;
-  z-index: 1;
+    left: 0;
+    z-index: 1;
 }
 
 .table_wrapper tbody th {
-  position: -webkit-sticky; /* for Safari */
-  position: sticky;
-  left: 0;
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    left: 0;
 }
