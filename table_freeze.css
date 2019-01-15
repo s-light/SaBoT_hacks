@@ -12,6 +12,25 @@ div.table_wrapper {
     max-height: calc(100vh - 6em);
 }
 
+th, td {
+    background-clip: padding-box;
+}
+
+.table_wrapper thead th,
+.table_wrapper thead th:nth-child(2){
+    background-color: hsl(194, 86%, 80%);
+}
+
+.table_wrapper tbody td:first-child,
+.table_wrapper tbody td:nth-child(2) {
+    background-color: hsl(194, 86%, 80%) !important;
+}
+
+.table-bordered > tbody > tr > td {
+    border-bottom-color:  hsl(0, 0%, 60%) !important;
+}
+
+
 .table_wrapper thead th {
     position: -webkit-sticky; /* for Safari */
     position: sticky;
@@ -23,8 +42,19 @@ div.table_wrapper {
     z-index: 1;
 }
 
-.table_wrapper tbody th {
+.table_wrapper thead th:nth-child(2) {
+    left: 5em;
+    z-index: 1;
+}
+
+.table_wrapper tbody td:first-child  {
     position: -webkit-sticky; /* for Safari */
     position: sticky;
     left: 0;
+}
+
+.table_wrapper tbody td:nth-child(2) {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    left: 5em;
 }
