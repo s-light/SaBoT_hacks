@@ -118,18 +118,28 @@ function get_column_index_from_name(field_name) {
     let thead_tr = document.querySelector('.container table > thead > tr');
     let column_index = thead_tr.childElementCount;
     if (thead_tr && (thead_tr.childElementCount > 0)) {
+        field_regex = new RegExp('^' + field_name + '$', 'i');
         do {
             column_index--;
-            console.log('col ', thead_tr.children[column_index].textContent);
+            // if (thead_tr.children[column_index]) {
+            //     const text = thead_tr.children[column_index].textContent;
+            //     console.log(
+            //         column_index,
+            //         field_regex.test(text),
+            //         text.match(field_regex),
+            //         text.search(field_regex),
+            //         text,
+            //     );
+            // }
         } while (
             (column_index >= 0) &&
-            (thead_tr.children[column_index]
-                .textContent.search(field_name) == -1)
+            (!field_regex.test(thead_tr.children[column_index].textContent))
         );
     }
+    return column_index;
 }
 
-function modifie_email(project_name_el, main_contact_el, email_el) {
+function create_named_mail_address(project_name_el, main_contact_el, email_el) {
     const project_name = project_name_el.textContent.trim();
     const main_contact = main_contact_el.textContent.trim();
     const email = email_el.textContent.trim();
@@ -146,7 +156,7 @@ function mod_email() {
     if (thead_tr && (tbody.childElementCount > 0)) {
         const project_name_col = get_column_index_from_name('project name');
         const main_contact_col = get_column_index_from_name('main contact');
-        const email_col = get_column_index_from_name('mail');
+        const email_col = get_column_index_from_name('e-mail');
         console.log('project_name_col', project_name_col);
         console.log('main_contact_col', main_contact_col);
         console.log('email_col', email_col);
@@ -157,7 +167,7 @@ function mod_email() {
         ) {
             for (let row of tbody.children) {
                 // console.log(row);
-                modifie_email(
+                create_named_mail_address(
                     row.children[project_name_col],
                     row.children[main_contact_col],
                     row.children[email_col]
@@ -281,20 +291,6 @@ function mod_action_edit_target() {
 }
 
 
-
-// function add_focus_targets() {
-//     console.log('add_focus_targets...');
-//     let table = document.querySelector('table');
-//     if (table) {
-//         const el_wrapper = document.createElement('div');
-//         el_wrapper.classList.add('table_wrapper');
-//         el_wrapper.id = 'table_focus';
-//         // move table as child to wrapper..
-//         table.parentElement.appendChild(el_wrapper);
-//         el_wrapper.appendChild(table);
-//     }
-// }
-
 function add_focus_targets() {
     const view_nav = document.querySelector('ul.nav.nav-pills');
     view_nav.id = 'focus_nav';
@@ -308,6 +304,8 @@ function ui_mod() {
     console.info('ui_mod()');
 
     add_focus_targets();
+    // jump to focus_nav
+    document.location.hash = 'focus_nav';
 
     mod_email();
 
