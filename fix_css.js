@@ -19,13 +19,13 @@ function add_css_file(url) {
 //     }
 // }
 
+
 function add_table_wrapper() {
     console.log('add_table_wrapper...');
     let table = document.querySelector('table');
     if (table) {
         const el_wrapper = document.createElement('div');
         el_wrapper.classList.add('table_wrapper');
-        el_wrapper.id = 'table_focus';
         // move table as child to wrapper..
         table.parentElement.appendChild(el_wrapper);
         el_wrapper.appendChild(table);

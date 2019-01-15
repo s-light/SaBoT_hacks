@@ -125,7 +125,6 @@ function modifie_email(project_name_el, main_contact_el, email_el) {
     email_el.textContent = new_mail;
 }
 
-
 function mod_email() {
     console.group('mod_email:');
     let thead_tr = document.querySelector('.container > table > thead > tr');
@@ -156,42 +155,54 @@ function mod_email() {
 }
 
 
+
 function mod_actions() {
     console.group('mod_actions:');
 
-    const css_target_el = document.querySelector('.container > table');
+    const css_target_el = document.querySelector('.container table');
+    console.log('css_target_el', css_target_el);
 
-
-    add_css_toggle_option(
-        'hide_entries_success',
-        css_target_el,
-        'hide accepted projects',
-        false
-    );
+    if (!document.querySelector('input[id="show-only-notaccepted"]')) {
+        add_css_toggle_option(
+            'hide_entries_success',
+            css_target_el,
+            'hide accepted projects',
+            false
+        );
+    }
 
     // add line break
     const controls = document.querySelector('.container > div.controls');
     controls.appendChild(document.createElement('br'));
 
-    add_css_toggle_option(
-        'hide_action_delete',
-        css_target_el,
-        'hide action "delete"',
-        true
-    );
+    if (document.querySelector('a[href*="projects/del/"]')) {
+        add_css_toggle_option(
+            'hide_action_delete',
+            css_target_el,
+            'hide action "delete"',
+            true
+        );
+    }
 
-    add_css_toggle_option(
-        'hide_action_accept',
-        css_target_el,
-        'hide action "*accept"',
-        true
-    );
+    if (document.querySelector('form[action*="accept"]')) {
+        add_css_toggle_option(
+            'hide_action_accept',
+            css_target_el,
+            'hide action "*accept"',
+            true
+        );
+    }
+
 
 
 
     console.groupEnd();
     console.log('');
 }
+
+
+
+
 
 
 const target_tab_list = [
@@ -246,7 +257,8 @@ function mod_action_edit_target() {
             // console.log(event.srcElement.value);
             change_target_tab(event.srcElement.value);
         },
-        'select edit target_tab:'
+        'select edit target_tab:',
+        'internal'
     );
 
     console.groupEnd();
@@ -255,13 +267,38 @@ function mod_action_edit_target() {
 
 
 
+// function add_focus_targets() {
+//     console.log('add_focus_targets...');
+//     let table = document.querySelector('table');
+//     if (table) {
+//         const el_wrapper = document.createElement('div');
+//         el_wrapper.classList.add('table_wrapper');
+//         el_wrapper.id = 'table_focus';
+//         // move table as child to wrapper..
+//         table.parentElement.appendChild(el_wrapper);
+//         el_wrapper.appendChild(table);
+//     }
+// }
+
+function add_focus_targets() {
+    const view_nav = document.querySelector('ul.nav.nav-pills');
+    view_nav.id = 'focus_nav';
+    const table_wrapper = document.querySelector('.table_wrapper');
+    table_wrapper.id = 'focus_table';
+}
+
+
+
 function ui_mod() {
     console.info('ui_mod()');
+
+    add_focus_targets();
 
     mod_email();
 
     mod_actions();
     mod_action_edit_target();
+
 
     console.info('ui_mod done.');
 }

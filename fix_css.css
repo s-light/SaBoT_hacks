@@ -59,12 +59,12 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 /* action button modifications */
-.container > table.hide_action_delete > tbody > tr > td >
+.container  table.hide_action_delete > tbody > tr > td >
     a[href*="projects/del/"] {
     display: none;
 }
 
-.container > table.hide_action_accept > tbody > tr > td >
+.container  table.hide_action_accept > tbody > tr > td >
     form[action*="accept"] {
     display: none !important;
 }
