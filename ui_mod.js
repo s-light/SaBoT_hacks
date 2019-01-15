@@ -343,7 +343,7 @@ function add_focus_targets() {
     const table_wrapper = document.querySelector('.table_wrapper');
     table_wrapper.id = 'focus_table';
     // add_link('#focus_nav', 'jump to nav');
-    add_link('#focus_table', 'jump to table');
+    // add_link('#focus_table', 'jump to table');
 }
 
 
