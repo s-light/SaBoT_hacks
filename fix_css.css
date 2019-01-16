@@ -109,6 +109,6 @@ input[type="radio"], input[type="checkbox"] {
 
 
 /* show only unaccepted */
-.container > table.hide_entries_success > tbody > tr.success {
+.container  table.hide_entries_success > tbody > tr.success {
     display: none;
 }
