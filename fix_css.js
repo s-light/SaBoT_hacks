@@ -19,19 +19,6 @@ function add_css_file(url) {
 //     }
 // }
 
-
-function add_table_wrapper() {
-    console.log('add_table_wrapper...');
-    const table = document.querySelector('table');
-    if (table) {
-        const el_wrapper = document.createElement('div');
-        el_wrapper.classList.add('table_wrapper');
-        // move table as child to wrapper..
-        table.parentElement.appendChild(el_wrapper);
-        el_wrapper.appendChild(table);
-    }
-}
-
 function apply_folding_footer() {
     console.log('apply_folding_footer...');
     const footer = document.querySelector('#footer');
@@ -72,14 +59,11 @@ function fix_css() {
     add_css_file(
         'https://s-light.github.io/SaBoT_hacks/table_freeze.css'
     );
-    add_css_file(
-        'https://s-light.github.io/SaBoT_hacks/table_extensions.css'
-    );
-    add_css_file(
-        'https://s-light.github.io/SaBoT_hacks/tablesorter/css/theme.blue.css'
-    );
 
-    add_table_wrapper();
+    // this file is now part of SaBoT :-)
+    // add_css_file(
+    //     'https://s-light.github.io/SaBoT_hacks/table_extensions.css'
+    // );
 
     apply_folding_footer();
     apply_folding_header();

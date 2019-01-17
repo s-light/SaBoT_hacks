@@ -26,7 +26,7 @@ th, td {
     background-color: hsl(194, 86%, 80%) !important;
 }
 
-.table-bordered > tbody > tr > td {
+.table_wrapper .table-bordered > tbody > tr > td {
     border-bottom-color:  hsl(0, 0%, 60%) !important;
 }
 
