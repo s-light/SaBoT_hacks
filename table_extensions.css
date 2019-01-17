@@ -18,14 +18,15 @@
   /* width: auto; */
   table-layout: fixed;
 }
+
+.table_wrapper .tablesorter th,
 .table_wrapper .tablesorter td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 3em;
 }
-.table_wrapper .tablesorter th {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 10px;
+
+.table_wrapper .tablesorter td {
+    /* white-space: pre-line; */
+    white-space: normal;
 }

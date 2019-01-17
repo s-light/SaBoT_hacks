@@ -40,17 +40,20 @@ th, td {
 .table_wrapper thead th:first-child {
     left: 0;
     z-index: 1;
+    width: 5em;
 }
 
 .table_wrapper thead th:nth-child(2) {
     left: 5em;
     z-index: 1;
+    width: 10em;
 }
 
 .table_wrapper tbody td:first-child  {
     position: -webkit-sticky; /* for Safari */
     position: sticky;
     left: 0;
+    width: 5em;
 }
 
 .table_wrapper tbody td:nth-child(2) {
