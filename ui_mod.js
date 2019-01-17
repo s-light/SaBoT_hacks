@@ -232,6 +232,15 @@ function mod_actions() {
     const css_target_el = document.querySelector('.container table');
     console.log('css_target_el', css_target_el);
 
+    if (!document.querySelector('input[id="show-only-accepted"]')) {
+        add_css_toggle_option(
+            'hide_entries_not_success',
+            css_target_el,
+            'only accepted projects',
+            false
+        );
+    }
+
     if (!document.querySelector('input[id="show-only-notaccepted"]')) {
         add_css_toggle_option(
             'hide_entries_success',
