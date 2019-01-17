@@ -41,7 +41,7 @@ function init_tablesorter() {
             // add a default type search to the first name column
             filter_defaultFilter: { 6 : '~{query}' },
             // include column filters
-            filter_columnFilters: false,
+            filter_columnFilters: true,
             // filter_placeholder: { search : 'Search...' },
             filter_saveFilters : true,
             // filter_reset: '.reset',

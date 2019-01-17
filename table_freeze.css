@@ -31,11 +31,20 @@ th, td {
 }
 
 
+
 .table_wrapper thead th {
     position: -webkit-sticky; /* for Safari */
     position: sticky;
     top: 0;
+    height: 4.5em;
 }
+
+.table_wrapper thead .tablesorter-filter-row th {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 1em;
+}
+
 
 .table_wrapper thead th:first-child {
     left: 0;

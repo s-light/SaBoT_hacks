@@ -1,5 +1,84 @@
 
 /******************************************/
+/* minimal tablesorter */
+.tablesorter .header,
+.tablesorter .tablesorter-header {
+	/* black (unsorted) double arrow */
+	background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+	/* white (unsorted) double arrow */
+	/* background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAAP///////yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==); */
+	/* image */
+	/* background-image: url(images/black-unsorted.gif); */
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding: 4px 18px 4px 4px;
+	white-space: normal;
+	cursor: pointer;
+}
+
+.tablesorter .headerSortUp,
+.tablesorter .tablesorter-headerSortUp,
+.tablesorter .tablesorter-headerAsc {
+	background-color: #9fbfdf;
+	/* black asc arrow */
+	background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+	/* white asc arrow */
+	/* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7); */
+	/* image */
+	/* background-image: url(images/black-asc.gif); */
+}
+
+.tablesorter .headerSortDown,
+.tablesorter .tablesorter-headerSortDown,
+.tablesorter .tablesorter-headerDesc {
+	background-color: #8cb3d9;
+	/* black desc arrow */
+	background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+	/* white desc arrow */
+	/* background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAAP///////yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7); */
+	/* image */
+	/* background-image: url(images/black-desc.gif); */
+}
+
+.tablesorter thead .sorter-false {
+	background-image: none;
+	cursor: default;
+	padding: 4px;
+}
+
+table > thead > tr.tablesorter-filter-row > td {
+    padding: 0;
+}
+
+thead input.tablesorter-filter {
+    /* this rule set is originaly coppied from bootstrap .form-control */
+	display: block;
+	width: 100%;
+	padding: 0.2em;
+	color: hsl(0, 0%, 33.3%);
+	background-color: hsl(0, 0%, 100%);
+	background-image: none;
+	border: 1px solid hsl(0, 0%, 80%);
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.1);
+	box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.1);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+thead input.tablesorter-filter:focus {
+    /* orig: .form-control:focus */
+	border-color: hsl(206.6, 74.9%, 65.7%);
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.1), 0 0 8px hsla(206.6, 74.9%, 65.7%, 0.6);
+	box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.1), 0 0 8px hsla(206.6, 74.9%, 65.7%, 0.6);
+}
+
+
+
+
+/******************************************/
 /* helpers for toggle visibility of accepted projects... */
 
 /* show only accepted -> hide all other lines */
@@ -27,11 +106,4 @@
 
 .table_wrapper .tablesorter td {
     white-space: pre-line;
-} */
-
-/******************************************/
-/* theme tweaks */
-/* highlight row on hover */
-/* .tablesorter-blue tbody > tr:hover > td {
-    background-color: hsla(0, 100%, 100%, 0.5);
 } */
