@@ -106,9 +106,3 @@ input[type="radio"], input[type="checkbox"] {
     margin-left: 1em;
     margin-right: 1em;
 }
-
-
-/* show only unaccepted */
-.container  table.hide_entries_success > tbody > tr.success {
-    display: none;
-}

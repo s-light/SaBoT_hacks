@@ -72,6 +72,9 @@ function fix_css() {
     add_css_file(
         'https://s-light.github.io/SaBoT_hacks/table_freeze.css'
     );
+    add_css_file(
+        'https://s-light.github.io/SaBoT_hacks/table_extensions.css'
+    );
 
     add_table_wrapper();
 

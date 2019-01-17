@@ -1,0 +1,13 @@
+
+/******************************************/
+/* helpers for toggle visibility of accepted projects... */
+
+/* show only accepted -> hide all other lines */
+.container  table.hide_entries_not_success > tbody > tr:not(.success) {
+    display: none;
+}
+
+/* show only unaccepted -> hide accepted once */
+.container  table.hide_entries_success > tbody > tr.success {
+    display: none;
+}
