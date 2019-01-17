@@ -14,8 +14,7 @@
 
 /******************************************/
 /* enable table width resizable */
-.table_wrapper table {
-  /* width: auto; */
+/* .table_wrapper table {
   table-layout: fixed;
 }
 
@@ -27,6 +26,12 @@
 }
 
 .table_wrapper .tablesorter td {
-    /* white-space: pre-line; */
-    white-space: normal;
-}
+    white-space: pre-line;
+} */
+
+/******************************************/
+/* theme tweaks */
+/* highlight row on hover */
+/* .tablesorter-blue tbody > tr:hover > td {
+    background-color: hsla(0, 100%, 100%, 0.5);
+} */

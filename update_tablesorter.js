@@ -31,7 +31,8 @@ function init_tablesorter() {
     // init tablesorter
     $('.tablesorter').tablesorter({
         theme: 'blue',
-        widgets: ['zebra', 'resizable', 'filter'],
+        widgets: ['filter'],
+        // widgets: ['zebra', 'resizable', 'filter'],
         widgetOptions : {
             // https://mottie.github.io/tablesorter/docs/example-widget-filter-any-match.html
             // Set to use a jQuery selector (or jQuery object) pointing to the
