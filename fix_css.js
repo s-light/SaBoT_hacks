@@ -75,6 +75,9 @@ function fix_css() {
     add_css_file(
         'https://s-light.github.io/SaBoT_hacks/table_extensions.css'
     );
+    add_css_file(
+        'https://s-light.github.io/SaBoT_hacks/tablesorter/css/theme.blue.css'
+    );
 
     add_table_wrapper();
 
