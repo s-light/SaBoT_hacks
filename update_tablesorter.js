@@ -30,7 +30,7 @@ function add_search_fields() {
 function init_tablesorter() {
     // init tablesorter
     $('.tablesorter').tablesorter({
-        theme: 'blue',
+        // theme: 'blue',
         widgets: ['filter'],
         // widgets: ['zebra', 'resizable', 'filter'],
         widgetOptions : {
