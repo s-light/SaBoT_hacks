@@ -11,3 +11,21 @@
 .container  table.hide_entries_success > tbody > tr.success {
     display: none;
 }
+
+/******************************************/
+/* enable table width resizable */
+.table_wrapper table {
+  /* width: auto; */
+  table-layout: fixed;
+}
+.table_wrapper .tablesorter td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 10px;
+}
+.table_wrapper .tablesorter th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 10px;
+}

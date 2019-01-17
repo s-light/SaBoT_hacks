@@ -11,7 +11,7 @@ function add_search_fields() {
     // add second one.
     const search_contact = document.createElement('input');
     search_contact.type = 'search';
-    search_contact.placeholder = 'search contact';
+    search_contact.placeholder = 'filter contact';
     search_contact.classList.add('form-control');
     search_contact.classList.add('search2');
     search_contact.setAttribute('data-column', '6');
@@ -29,9 +29,9 @@ function add_search_fields() {
 
 function init_tablesorter() {
     // init tablesorter
-    $(".tablesorter").tablesorter({
+    $('.tablesorter').tablesorter({
         theme: 'blue',
-        widgets: ["zebra", "filter"],
+        widgets: ['zebra', 'resizable', 'filter'],
         widgetOptions : {
             // https://mottie.github.io/tablesorter/docs/example-widget-filter-any-match.html
             // Set to use a jQuery selector (or jQuery object) pointing to the
@@ -43,7 +43,8 @@ function init_tablesorter() {
             filter_columnFilters: false,
             // filter_placeholder: { search : 'Search...' },
             filter_saveFilters : true,
-            // filter_reset: '.reset'
+            // filter_reset: '.reset',
+            resizable: true,
         },
     });
 }
