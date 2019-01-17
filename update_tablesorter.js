@@ -1,4 +1,12 @@
 function init_tablesorter() {
+
+    // mod search input
+    const search_input = document.querySelector('input.search');
+    search_input.type = 'search';
+    search_input.placeholder = 'search any column';
+    search_input.setAttribute('data-column', 'all');
+
+    // init tablesorter
     $(".tablesorter").tablesorter({
         theme: 'blue',
         widgets: ["zebra", "filter"],
@@ -19,19 +27,11 @@ function init_tablesorter() {
 }
 
 function update_tablesorter() {
-    console.info('ui_mod()');
+    console.info('update_tablesorter()');
 
-    add_focus_targets();
-    // jump to focus_nav
-    document.location.hash = 'focus_nav';
+    init_tablesorter();
 
-    mod_email();
-
-    mod_actions();
-    mod_action_edit_target();
-
-
-    console.info('ui_mod done.');
+    console.info('update_tablesorter done.');
 }
 
 
