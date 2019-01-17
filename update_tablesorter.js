@@ -5,6 +5,7 @@ function init_tablesorter() {
     search_input.type = 'search';
     search_input.placeholder = 'search any column';
     search_input.setAttribute('data-column', 'all');
+    $(search_input).off('keyup');
 
     // init tablesorter
     $(".tablesorter").tablesorter({
