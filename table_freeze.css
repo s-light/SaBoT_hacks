@@ -9,7 +9,7 @@ https://stackoverflow.com/questions/15811653/table-with-fixed-header-and-fixed-c
 div.table_wrapper {
     overflow: scroll;
     clear: both;
-    max-height: calc(100vh - 7em);
+    max-height: calc(100vh - 9em);
 }
 
 
