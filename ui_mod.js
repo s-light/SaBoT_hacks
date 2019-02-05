@@ -192,6 +192,11 @@ function create_named_mail_address_icon(
     // console.log(mailto_link);
     email_el.textContent = '';
     email_el.appendChild(mailto_link);
+
+    const mail_hidden = document.createElement('span');
+    mail_hidden.style.display = 'none';
+    mail_hidden.appendChild(document.createTextNode(email));
+    email_el.appendChild(mail_hidden);
 }
 
 function mod_email() {
