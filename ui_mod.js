@@ -49,12 +49,15 @@ function add_css_toggle_option(
 
     const label = document.createElement('label');
     label.appendChild(toggle_input);
+    label.appendChild(document.createTextNode('\n'));
     label.appendChild(document.createTextNode(label_text));
+    label.appendChild(document.createTextNode('\n'));
 
     if (parent_el == undefined) {
         parent_el = document.querySelector('.container > div.controls');
     }
     parent_el.appendChild(label);
+    parent_el.appendChild(document.createTextNode('\n'));
 
     // console.groupEnd();
     // console.log('');
@@ -113,18 +116,25 @@ function add_input_select(
         if (preselect && preselect == list_item) {
             option.selected = true;
         }
+        input_select.appendChild(document.createTextNode('    '));
         input_select.appendChild(option);
+        input_select.appendChild(document.createTextNode('\n'));
+        form-group
     }
 
 
     const label = document.createElement('label');
+    label.appendChild(document.createTextNode('\n'));
     label.appendChild(document.createTextNode(label_text));
+    label.appendChild(document.createTextNode('\n'));
     label.appendChild(input_select);
+    label.appendChild(document.createTextNode('\n'));
 
     if (parent_el == undefined) {
         parent_el = document.querySelector('.container > div.controls');
     }
     parent_el.appendChild(label);
+    parent_el.appendChild(document.createTextNode('\n'));
 
     // console.log(label);
 

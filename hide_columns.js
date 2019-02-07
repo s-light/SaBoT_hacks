@@ -11,62 +11,6 @@ function add_styles(styles_string) {
 }
 
 
-
-
-function add_input_select(
-    option_list,
-    change_action,
-    label_text,
-    preselect=undefined,
-    parent_el=undefined
-) {
-    // console.group('add_input_select:');
-
-    // <label>
-    //   Choose a thing:
-    //   <select>
-    //       <option value="">--Please choose an option--</option>
-    //       <option value="dog">Dog</option>
-    //       <option value="cat">Cat</option>
-    //       <option value="hamster">Hamster</option>
-    //       <option value="parrot">Parrot</option>
-    //       <option value="spider">Spider</option>
-    //       <option value="goldfish">Goldfish</option>
-    //   </select>
-    // </label>
-
-    const input_select = document.createElement('select');
-    // input_select.classList.add('');
-    // input_select.type = 'checkbox';
-    // input_select.id = 'tags_button';
-    input_select.onchange = change_action;
-
-    for (let list_item of option_list) {
-        const option = document.createElement('option');
-        option.value = list_item;
-        option.appendChild(document.createTextNode(list_item));
-        if (preselect && preselect == list_item) {
-            option.selected = true;
-        }
-        input_select.appendChild(option);
-    }
-
-
-    const label = document.createElement('label');
-    label.appendChild(document.createTextNode(label_text));
-    label.appendChild(input_select);
-
-    if (parent_el == undefined) {
-        parent_el = document.querySelector('.container > div.controls');
-    }
-    parent_el.appendChild(label);
-
-    // console.log(label);
-
-    // console.groupEnd();
-    // console.log('');
-}
-
 function add_input_text(
     placeholder,
     change_action,
@@ -87,8 +31,12 @@ function add_input_text(
     // text_input.style.width = '100%';
 
     const label = document.createElement('label');
-    label.appendChild(text_input);
+    label.appendChild(document.createTextNode('\n'));
     label.appendChild(document.createTextNode(label_text));
+    label.appendChild(document.createTextNode('\n'));
+    label.appendChild(text_input);
+    label.appendChild(document.createTextNode('\n'));
+
     if (full_width) {
         label.style.width = '100%';
     }
@@ -97,6 +45,7 @@ function add_input_text(
         parent_el = document.querySelector('.container > div.controls');
     }
     parent_el.appendChild(label);
+    parent_el.appendChild(document.createTextNode('\n'));
 
     // console.groupEnd();
     // console.log('');
