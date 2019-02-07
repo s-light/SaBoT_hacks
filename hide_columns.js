@@ -31,9 +31,9 @@ function add_input_text(
     // text_input.style.width = '100%';
 
     const label = document.createElement('label');
-    label.appendChild(document.createTextNode('\n'));
+    label.appendChild(document.createTextNode('\n    '));
     label.appendChild(document.createTextNode(label_text));
-    label.appendChild(document.createTextNode('\n'));
+    label.appendChild(document.createTextNode('\n    '));
     label.appendChild(text_input);
     label.appendChild(document.createTextNode('\n'));
 

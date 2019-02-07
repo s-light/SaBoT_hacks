@@ -109,6 +109,7 @@ function add_input_select(
     // input_select.id = 'tags_button';
     input_select.onchange = change_action;
 
+    input_select.appendChild(document.createTextNode('\n        '));
     for (let list_item of option_list) {
         const option = document.createElement('option');
         option.value = list_item;
@@ -116,16 +117,16 @@ function add_input_select(
         if (preselect && preselect == list_item) {
             option.selected = true;
         }
-        input_select.appendChild(document.createTextNode('    '));
+        input_select.appendChild(document.createTextNode('\n        '));
         input_select.appendChild(option);
-        input_select.appendChild(document.createTextNode('\n'));
     }
+    input_select.appendChild(document.createTextNode('\n    '));
 
 
     const label = document.createElement('label');
-    label.appendChild(document.createTextNode('\n'));
+    label.appendChild(document.createTextNode('\n    '));
     label.appendChild(document.createTextNode(label_text));
-    label.appendChild(document.createTextNode('\n'));
+    label.appendChild(document.createTextNode('\n    '));
     label.appendChild(input_select);
     label.appendChild(document.createTextNode('\n'));
 
