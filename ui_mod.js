@@ -119,7 +119,6 @@ function add_input_select(
         input_select.appendChild(document.createTextNode('    '));
         input_select.appendChild(option);
         input_select.appendChild(document.createTextNode('\n'));
-        form-group
     }
 
 
