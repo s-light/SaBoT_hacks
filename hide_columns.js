@@ -169,7 +169,12 @@ function add_hide_columns() {
         'hide columns',     // label
         // 'hide_columns',     // id
     );
-    text_input.value = value_load('hide_columns__text_raw');
+
+    // load and apply
+    let text_raw = value_load('hide_columns__text_raw');
+    text_input.value = text_raw;
+    handle_hide_columns(column_map, text_raw);
+
     text_input.addEventListener('keyup', function(event) {
         // console.log(event.target);
         text_raw = event.target.value;
