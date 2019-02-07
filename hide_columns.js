@@ -54,9 +54,9 @@ function add_input_text(
     form_group.appendChild(document.createTextNode('\n'));
 
 
-    if (full_width) {
-        label.style.width = '100%';
-    }
+    // if (full_width) {
+    //     label.style.width = '100%';
+    // }
 
 
     if (parent_el == undefined) {
