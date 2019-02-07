@@ -6,8 +6,8 @@
 // @version  1.13.0
 // @require https://s-light.github.io/SaBoT_hacks/fix_css.js
 // @require https://s-light.github.io/SaBoT_hacks/save_form_set.js
-// @require https://s-light.github.io/SaBoT_hacks/ui_mod.js
 // @require https://s-light.github.io/SaBoT_hacks/hide_columns.js
+// @require https://s-light.github.io/SaBoT_hacks/ui_mod.js
 //
 // old / history:
 // --- tablesorter update is landed in SaBot :-) not needed anymore!
