@@ -15,37 +15,60 @@ function add_input_text(
     placeholder,
     change_action,
     label_text,
+    // id=None,
     full_width=true,
     parent_el=undefined
 ) {
     // console.group('add_input_select:');
 
     const text_input = document.createElement('input');
-    text_input.classList.add('checkboxinput');
+    // text_input.classList.add('');
     text_input.type = 'search';
     text_input.placeholder = placeholder;
     // text_input.classList.add('search');
     text_input.classList.add('form-control');
-    // text_input.id = 'tags_button';
+    text_input.classList.add('form-fill');
+    // text_input.id = id;
     text_input.onchange = change_action;
     // text_input.style.width = '100%';
 
     const label = document.createElement('label');
     label.appendChild(document.createTextNode('\n    '));
     label.appendChild(document.createTextNode(label_text));
-    label.appendChild(document.createTextNode('\n    '));
-    label.appendChild(text_input);
     label.appendChild(document.createTextNode('\n'));
+
+    const form_group = document.createElement('div');
+    form_group.classList.add('form-group');
+    form_group.classList.add('controls');
+    form_group.classList.add('pull-left');
+    form_group.classList.add('auto-align');
+    form_group.style.width = 'calc(100% - 20em)';
+    form_group.appendChild(document.createTextNode('\n    '));
+    form_group.appendChild(label);
+    // form_group.appendChild(document.createTextNode('\n    '));
+    // form_group.appendChild(add_save_form(
+    //
+    // ));
+    form_group.appendChild(document.createTextNode('\n    '));
+    form_group.appendChild(text_input);
+    form_group.appendChild(document.createTextNode('\n'));
+
 
     if (full_width) {
         label.style.width = '100%';
     }
 
+
     if (parent_el == undefined) {
-        parent_el = document.querySelector('.container > div.controls');
+        const next_child = document.querySelector('.table_wrapper');
+        next_child.parentElement.insertBefore(form_group, next_child);
+        next_child.parentElement.insertBefore(
+            document.createTextNode('\n'), next_child);
     }
-    parent_el.appendChild(label);
-    parent_el.appendChild(document.createTextNode('\n'));
+    else {
+        parent_el.appendChild(form_group);
+        parent_el.appendChild(document.createTextNode('\n'));
+    }
 
     // console.groupEnd();
     // console.log('');
@@ -78,6 +101,18 @@ function create_css_column_hide() {
         console.error('table has no children.');
     }
 }
+
+// function create_css_form_auto_align() {
+//     let styles = '/* auto align for form elements */\n';
+//     styles += '.' + get_hide_col_from_index(i) + ' ';
+//     styles += 'th:nth-child(' + (i+1) + '), ' + '\n';
+//     styles += '.' + get_hide_col_from_index(i) + ' ';
+//     styles += 'td:nth-child(' + (i+1) + ') {' + '\n';
+//     styles += '    display: none;' + '\n';
+//     styles += '}' + '\n';
+//     styles += '\n';
+//     add_styles(styles);
+// }
 
 function create_column_map() {
     const first_tr = document.querySelector('table thead tr');
@@ -129,18 +164,19 @@ function add_hide_columns() {
     const column_map = create_column_map();
     // get_hide_col_from_index(i)
     const text_input = add_input_text(
-        'hide: columns',
-        undefined,
-        // 'hide columns'
-        ''
+        'hide: columns',    // placeholder
+        undefined,          // change_action
+        'hide columns',     // label
+        // 'hide_columns',     // id
     );
+    text_input.value = value_load('hide_columns__text_raw');
     text_input.addEventListener('keyup', function(event) {
         // console.log(event.target);
         text_raw = event.target.value;
+        value_save('hide_columns__text_raw', text_raw);
         // column_map
         handle_hide_columns(column_map, text_raw);
     });
-
 }
 
 
