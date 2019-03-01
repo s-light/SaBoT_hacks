@@ -1,5 +1,21 @@
 
 
+function add_controls() {
+    const el_nav = document.querySelector('.nav.nav-pills');
+    if (el_nav) {
+        const el_controls = document.createElement('div');
+        el_controls.classList.add('form-group');
+        el_controls.classList.add('pull-left');
+        el_controls.classList.add('controls');
+        el_nav.parentElement.insertBefore(
+            el_controls,
+            el_nav.nextSibling
+        );
+    }
+    const result = document.querySelector('.container > div.controls');
+    return result;
+}
+
 function add_nav_button(
     link_text,
     onclick,
@@ -47,17 +63,24 @@ function add_css_toggle_option(
         toggle_input.checked = true;
     }
 
-    const label = document.createElement('label');
-    label.appendChild(toggle_input);
-    label.appendChild(document.createTextNode('\n'));
-    label.appendChild(document.createTextNode(label_text));
-    label.appendChild(document.createTextNode('\n'));
+    const el_new = document.createElement('label');
+    el_new.appendChild(toggle_input);
+    el_new.appendChild(document.createTextNode('\n'));
+    el_new.appendChild(document.createTextNode(label_text));
+    el_new.appendChild(document.createTextNode('\n'));
 
     if (parent_el == undefined) {
         parent_el = document.querySelector('.container > div.controls');
+        if (parent_el == undefined) {
+            parent_el = add_controls();
+        }
     }
-    parent_el.appendChild(label);
-    parent_el.appendChild(document.createTextNode('\n'));
+    if (parent_el) {
+        parent_el.appendChild(el_new);
+        parent_el.appendChild(document.createTextNode('\n'));
+    } else {
+        console.error('add_css_toggle_option: no parent to add to...');
+    }
 
     // console.groupEnd();
     // console.log('');
@@ -70,14 +93,23 @@ function add_link(
     parent_el=undefined,
     target='_blank'
 ) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.appendChild(document.createTextNode(link_text));
+    const el_new = document.createElement('a');
+    el_new.href = url;
+    el_new.appendChild(document.createTextNode(link_text));
+
     if (parent_el == undefined) {
         parent_el = document.querySelector('.container > div.controls');
+        if (parent_el == undefined) {
+            parent_el = add_controls();
+        }
     }
-    parent_el.appendChild(link);
-    return link;
+    if (parent_el) {
+        parent_el.appendChild(el_new);
+        parent_el.appendChild(document.createTextNode('\n'));
+    } else {
+        console.error('add_css_toggle_option: no parent to add to...');
+    }
+    return el_new;
 }
 
 
@@ -123,18 +155,25 @@ function add_input_select(
     input_select.appendChild(document.createTextNode('\n    '));
 
 
-    const label = document.createElement('label');
-    label.appendChild(document.createTextNode('\n    '));
-    label.appendChild(document.createTextNode(label_text));
-    label.appendChild(document.createTextNode('\n    '));
-    label.appendChild(input_select);
-    label.appendChild(document.createTextNode('\n'));
+    const el_new = document.createElement('label');
+    el_new.appendChild(document.createTextNode('\n    '));
+    el_new.appendChild(document.createTextNode(label_text));
+    el_new.appendChild(document.createTextNode('\n    '));
+    el_new.appendChild(input_select);
+    el_new.appendChild(document.createTextNode('\n'));
 
     if (parent_el == undefined) {
         parent_el = document.querySelector('.container > div.controls');
+        if (parent_el == undefined) {
+            parent_el = add_controls();
+        }
     }
-    parent_el.appendChild(label);
-    parent_el.appendChild(document.createTextNode('\n'));
+    if (parent_el) {
+        parent_el.appendChild(el_new);
+        parent_el.appendChild(document.createTextNode('\n'));
+    } else {
+        console.error('add_css_toggle_option: no parent to add to...');
+    }
 
     // console.log(label);
 
